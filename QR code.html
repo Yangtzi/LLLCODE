@@ -2,12 +2,61 @@
 <html>
 <head>
 <meta charset="utf-8">
+
 <title>文档标题</title>
+
+<style type="text/css">
+    #a{
+        position:absolute;
+        top:390px;
+        left:145px
+    }
+    
+    p{
+        font-family:Helvetica;
+        text-align:center;
+        letter-spacing: 1.5px;
+        
+    }
+
+    #showDate{
+    font-size:18px;
+    }
+
+    #seconds{
+    font-size:22px;
+    
+    }
+</style>
 </head>
  
 <body>
-    <body background="https://raw.githubusercontent.com/Yangtzi/LLLCODE/main/IMG.JPG" style="background-repeat: no-repeat;background-size: 100% 100%;background-attachment: fixed;">
-
+    <body background="https://raw.githubusercontent.com/Yangtzi/LLLCODE/main/IMG.png" style="background-repeat: no-repeat;background-size: 100% 100%;background-attachment: fixed;">
+    
+        <div id="a">
+            <p><span id="showDate">时间</span><span id="seconds">秒数</span></p>
+        </div>
+            
+        <script type="text/javascript"> 
+            window.onload=function(){
+            //每1秒刷新时间
+            setInterval("getTime()",1);
+            }
+            
+            //取得系统当前时间 
+            function getTime(){ 
+            var myDate = new Date(); 
+            //var date = myDate.toLocaleDateString();
+            var years = myDate.getUTCFullYear();
+            var months = ("0"+(myDate.getMonth()+1)).slice(-2);
+            var days = ("0"+myDate.getDate()).slice(-2);
+            var hours = ("0"+myDate.getHours()).slice(-2); 
+            var minutes = ("0"+myDate.getMinutes()).slice(-2); 
+            var seconds = ("0"+myDate.getSeconds()).slice(-2); 
+            document.getElementById("showDate").innerHTML=years+"-"+months+"-"+days+" "+hours+":"+minutes+":"; //将值赋给div 
+            document.getElementById("seconds").innerHTML=seconds;
+            } 
+        </script>    
 </body>
  
 </html>
